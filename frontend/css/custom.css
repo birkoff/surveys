@@ -1,0 +1,13 @@
+.botones {
+  padding-top: 50px;
+}
+
+input[type="radio"]:checked { 
+    background:pink !important;
+}
+
+.btn-light:not(:disabled):not(.disabled).active {
+    color: #212529;
+    background-color:#5ace88;
+    border-color: #d3d9df;
+}

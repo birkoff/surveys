@@ -1,0 +1,55 @@
+service: encuestas
+app: encuestas
+tenant: eclecticiq
+
+provider:
+  name: aws
+  runtime: python3.7
+  timeout: 30
+#  stage: dev
+  region: eu-central-1
+#  role: lambdaAssumeRole
+
+  profile: ${file(settings.${self:provider.stage}.json):profile}
+
+  environment:
+    ENVIRONMENT: ${opt:stage}
+    DB_CONNECTION: ${file(settings.${self:provider.stage}.json):database_connection}
+
+package:
+  include:
+    - ../handler.py
+    - ../requirements.txt
+    - ../modules/**
+#    - ../../../config/*
+  exclude:
+    - settings.dev.json
+    - settings.prod.json
+
+functions:
+  create:
+    handler: handler.create
+    events:
+      - http:
+          path: /encuesta
+          method: post
+          cors: true
+
+resources:
+  Resources:
+    MyDB:
+      DeletionPolicy: Delete
+      Properties:
+        AllocatedStorage: "5"
+        DBInstanceClass: "db.t2.micro"
+        DBName: "encuestas"
+        Engine: MySQL
+        MasterUserPassword: "encuestas"
+        MasterUsername: "comedor"
+        Tags:
+          - Key: Name
+            Value: "EncuestaComedor"
+      Type: "AWS::RDS::DBInstance"
+
+plugins:
+  - serverless-python-requirements
