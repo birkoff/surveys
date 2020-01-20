@@ -11,3 +11,25 @@ input[type="radio"]:checked {
     background-color:#5ace88;
     border-color: #d3d9df;
 }
+
+.enviarEncuesta {
+    color: #ffffff !important;
+}
+
+.section-subheading {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+h2 {
+	padding: 30px;
+}
+
+
+.page-section {
+    min-height: 1300px;
+}
+
+.intro-text-main {
+    min-height: 1000px;
+}

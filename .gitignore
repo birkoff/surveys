@@ -1,8 +1,9 @@
 
 .DS_Store
-deployments/.serverless/
-.idea/
+deployments/api/.serverless/
+deployments/api/node_modules/
 deployments/node_modules/
+.idea/
 frontend/.browserslistrc
 frontend/vendor/
 *.pyc
