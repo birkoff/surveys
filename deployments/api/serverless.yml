@@ -1,38 +1,47 @@
-service: encuestas
-app: encuestas
-tenant: eclecticiq
+service: encuesta-metalsa
+app: survey
+tenant: birkoffh
 
 provider:
   name: aws
   runtime: python3.7
   timeout: 30
 #  stage: dev
-  region: eu-central-1
+  region: us-east-1
 #  role: lambdaAssumeRole
 
-  profile: ${file(settings.${self:provider.stage}.json):profile}
+  profile: ${file(settings.${opt:stage}.json):profile}
 
   environment:
     ENVIRONMENT: ${opt:stage}
-    DB_CONNECTION: ${file(settings.${self:provider.stage}.json):database_connection}
+    DB_CONNECTION: ${file(settings.${opt:stage}.json):database_connection}
 
 package:
   include:
-    - ../handler.py
-    - ../requirements.txt
-    - ../modules/**
+    - ../../handler.py
+#    - ../../requirements.txt
+    - ../../modules/**
 #    - ../../../config/*
   exclude:
-    - settings.dev.json
-    - settings.prod.json
+    - settings.*.json
 
 functions:
+  initdb:
+    handler: handler.create_table
+
   create:
     handler: handler.create
     events:
       - http:
           path: /encuesta
           method: post
+          cors: true
+  resultados:
+    handler: handler.statistics
+    events:
+      - http:
+          path: /resultados
+          method: get
           cors: true
 
 resources:

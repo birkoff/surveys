@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import Table
+from sqlalchemy.sql import select, func
 from sqlalchemy.ext.declarative import declarative_base
 import modules.logs as logs
 import modules.response as Response
@@ -41,7 +42,44 @@ def mysql_engine():
     return create_engine(os.environ['DB_CONNECTION'])
 
 
-def create_table():
+def statistics(event, context):
+    # select pregunta, voto, count(voto) from votos group by pregunta, voto;
+    engine = mysql_engine()
+    # connection = engine.connect()
+    data = {}
+    with engine.connect() as con:
+        rs = con.execute('select pregunta, voto, count(voto) from votos group by pregunta, voto')
+        for row in rs:
+            if row[0] not in data:
+                data[row[0]] = {}
+            data[row[0]][row[1]] = row[2]
+            # data[row[0]] = ({row[1]: row[2]})
+            # print("{}{}{}".format(row[0], row[1], row[2]))
+
+    print(data)
+
+    response = []
+    for d in data:
+        response.append({
+            'pregunta': d,
+            'resultados': data[d]
+        })
+
+    print(response)
+    return Response.success(response)
+    # metadata = MetaData(mysql_engine())
+
+    # votos = Table('votos', metadata,
+    #               Column('id', Integer, primary_key=True),
+    #               Column('encuesta_id', Integer),
+    #               Column('pregunta', String(180)),
+    #               Column('voto', String(50)))
+    #
+    # stmt = select([votos.c.pregunta, votos.c.voto, func.count(votos.c.voto)]).group_by(votos.c.pregunta, votos.c.voto)
+    # connection.execute(select([stmt])).fetchall()
+
+
+def create_table(event, context):
     metadata = MetaData(mysql_engine())
     votos = Table('votos', metadata,
                   Column('id', Integer, primary_key=True),
@@ -93,17 +131,3 @@ def create(event, context):
         "create: {}, {}".format(resultados, comentarios)
     )
 
-
-if __name__ == "__main__":
-    create_table()
-
-    # event = {
-    #     'body': jason.dumps({
-    #         'resultados': "servicio-regular=on&comida-bueno=on&precios-muybueno=on&chocolateycafe-regular=on&mejoras-bueno=on",
-    #         'comentarios': "sdasdasdasd"
-    #     })
-    # }
-    #
-    # while range(1,30):
-    #     time.sleep(2)
-    #     create(event, None)

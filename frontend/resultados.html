@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="encuesta de comedor">
+    <meta name="author" content="hector reyes aleman">
+
+    <title>Encuesta del comedor</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Header -->
+<header class="masthead">
+    <div class="container" id="inicio">
+        <div class="intro-text intro-text-main">
+            <h2 class="section-subheading text-muted">Resultados de la Encuesta</h2>
+            <div class="intro-heading text-uppercase"></div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
+               href="#resultados-servicio">Resultados</a>
+        </div>
+    </div>
+</header>
+
+<!-- Prtegnta # 1 -->
+<section class="page-section" id="resultados-servicio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 chart-container text-center">
+                <h2 class="section-subheading text-muted text-uppercase">Servicio (1/5)</h2>
+                <canvas id="servicio"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-5 text-center botones">
+            <a class="btn btn-primary  text-uppercase js-scroll-trigger" href="#resultados-comida">Siguiente</a>
+        </div>
+    </div>
+</section>
+
+<!-- Prtegnta # 2 -->
+<section class="page-section" id="resultados-comida">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 chart-container text-center">
+                <h2 class="section-subheading text-muted text-uppercase">Comida (2/5)</h2>
+                <canvas id="comida"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-5 text-center botones">
+            <a class="btn btn-primary  text-uppercase js-scroll-trigger" href="#resultados-precios">Siguiente</a>
+        </div>
+    </div>
+</section>
+
+<!-- Prtegnta # 3 -->
+<section class="page-section" id="resultados-precios">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 chart-container text-center">
+                <h2 class="section-subheading text-muted text-uppercase">Precios (3/5)</h2>
+                <canvas id="precios"></canvas>
+
+            </div>
+        </div>
+
+        <div class="col-lg-5 text-center botones">
+            <a class="btn btn-primary  text-uppercase js-scroll-trigger" href="#resultados-chocolateycafe">Siguiente</a>
+        </div>
+    </div>
+</section>
+
+<!-- Prtegnta # 4 -->
+<section class="page-section" id="resultados-chocolateycafe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 chart-container text-center">
+                <h2 class="section-subheading text-muted text-uppercase">Chocolate y Cafe (4/5)</h2>
+                <canvas id="chocolateycafe"></canvas>
+
+            </div>
+        </div>
+        <div class="col-lg-5 text-center botones">
+            <a class="btn btn-primary  text-uppercase js-scroll-trigger" href="#resultados-mejoras">Siguiente</a>
+        </div>
+    </div>
+</section>
+
+<!-- Prtegnta # 5 -->
+<section class="page-section" id="resultados-mejoras">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 chart-container text-center">
+                <h2 class="section-subheading text-muted text-uppercase">Mejoras (5/5)</h2>
+                <canvas id="mejoras"></canvas>
+
+            </div>
+        </div>
+
+        <div class="col-lg-5 text-center botones">
+            <a class="btn btn-primary  text-uppercase js-scroll-trigger" href="#comentarios">Siguiente</a>
+        </div>
+    </div>
+</section>
+
+<!-- comentarios -->
+<!--    <section class="page-section" id="comentarios">-->
+<!--      <div class="container">-->
+<!--        <div class="row">-->
+<!--          <div class="col-lg-5 text-center">-->
+<!--            <h2 class="section-subheading text-muted text-uppercase">comentarios</h2>-->
+<!--            <h2 class="section-subheading text-muted">Dejanos tus comentarios y confirma el envio de la encuesta.</h2>-->
+<!--          </div>-->
+<!--          <div class="col-lg-5 text-center">-->
+<!--&lt;!&ndash;            <div class="form-group">&ndash;&gt;-->
+<!--                    <textarea rows="9" class="form-control" placeholder="comentarios..." required="required" data-validation-required-message="Please enter a message."> </textarea>-->
+<!--&lt;!&ndash;                    <p class="help-block text-danger"></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--          </div>-->
+<!--            <div class="col-lg-5 text-center botones">-->
+<!--              <a class="btn btn-primary  text-uppercase js-scroll-trigger enviarEncuesta"  id="enviarEncuesta">Enviar Encuesta</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="js/main.js"></script>
+<script src="js/resultados.js"></script>
+
+</body>
+
+</html>
+
+
+

@@ -2,6 +2,16 @@
   padding-top: 50px;
 }
 
+header.masthead {
+  height: 900px;
+}
+
+.backimage {
+	#background:transparent url("../img/logo.png")
+	background-repeat: no-repeat;
+}
+
+
 input[type="radio"]:checked { 
     background:pink !important;
 }
@@ -18,7 +28,7 @@ input[type="radio"]:checked {
 
 .section-subheading {
     padding-bottom: 50px;
-    padding-top: 50px;
+    #padding-top: 20px;
 }
 
 h2 {

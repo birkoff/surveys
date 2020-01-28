@@ -7,3 +7,6 @@ deployments/node_modules/
 frontend/.browserslistrc
 frontend/vendor/
 *.pyc
+deployments/api/settings.prod.json
+deployments/api/package-lock.json
+deployments/frontend/deploy-dev.sh

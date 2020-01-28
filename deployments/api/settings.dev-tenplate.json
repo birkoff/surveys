@@ -1,0 +1,5 @@
+{
+  "account_id": "",
+  "profile": "",
+  "database_connection": "mysql+pymysql://user:password@host:3306/encuestas"
+}
